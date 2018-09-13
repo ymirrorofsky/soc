@@ -1,0 +1,132 @@
+<ion-view title="国内挂单" hide-nav-bar="true" hide-back-button="true">
+    <ion-header-bar class="bar-calm header-back">
+        <div class="buttons">
+            <button class="button iconfont icon-back1 button-clear" ng-click="$ionicGoBack()">返回</button>
+        </div>
+        <h1 class="title">国内挂单</h1>
+    </ion-header-bar>
+    <ion-content class='guoNeiGuaDan conbg-vrc'>
+            <!-- <ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()"></ion-refresher> -->
+        <div class="mui-content" id="guonei">
+            <div class="guoneibox" style="position:relative">
+                <ul class="guoneinum">
+                    <li>
+                        <i style="font-size:.24rem;font-style:normal">当前价：</i>
+                        <span>{{info.curWorth}}</span>
+                        <i style="font-size:.24rem;font-style:normal">CNY</i>
+                    </li>
+                </ul>
+                <div class="mui-input-row mui-input-range field-contain">
+                    <div style="margin-top:1.15rem;text-align:center">
+                        <input type="text" id="field-range-input" ng-model="info.worth" placeholder="编辑价格">
+                    </div>
+                </div>
+                <div class="mui-input-row mui-input-range field-contain">
+                    <div>
+                        <input type="range" id="field-range" step="1" value="{{info.num}}" min="{{info.min_num}}" max="{{info.max_num}}" ng-model="info.num">
+                    </div>
+
+                    <div style="margin-top:1.15rem;text-align:center">
+                        <input type="text" id="field-range-input" ng-model="info.num" ng-blur="numBlur()" placeholder="请输入10的倍数">
+                    </div>
+                </div>
+                <div class="guoneitotal">
+                    <p>买入
+                        <span style="color:#02d2f5">{{info.num}}个</span>{{globalInfo.noun.coin_name}}，出价<span style="color:#02d2f5">{{info.worth}}元</span>，总价
+                        <span v-text="totalprice" style="color:#02d2f5">{{info.worth * info.num || 0  | number:2}}</span>元</p>
+                    <button type="button" class="guabuy" ng-click="guaMaiDan()" ng-if="info.isShow">挂买单</button>
+                </div>
+                <ul class="tapbox2">
+                    <li ng-class="{'tapactive':option1 == 'tab1'}" ng-click="options1Show('tab1')">
+                        <span>买家看板
+                            <i></i>
+                        </span>
+                    </li>
+                    <li data-index="show4" ng-class="{'tapactive':option1 == 'tab2'}" ng-click="options1Show('tab2')">
+                        <span>交易信箱
+                            <i></i>
+                        </span>
+                    </li>
+                </ul>
+                <ul class="showbox2">
+                    <li id="show3" ng-class="{'showactive':option1 == 'tab1'}">
+                        <ion-scroll class="mui-scroll-wrapper scw" id="scroll3">
+                            <div class="mui-scroll ms">
+                                <ul class="messagebox" href="#topPopover">
+                                    <li ng-repeat="item in displayList">
+                                        <div class="code">
+                                            <div class="codeleft">
+                                                <div class="circle"></div>
+                                                <p>单号：{{item.order_no}}</p>
+                                            </div>
+                                            <div class="time">{{item.create_time * 1000 | date:'yyyy-MM-dd HH:mm'}}</div>
+                                        </div>
+                                        <div class="info">ID:{{item.buyer_user_ID}}挂买{{item.num}}{{globalInfo.noun.coin_name}}，单价{{item.unit_price}}元，总计{{item.unit_price
+                                            * item.num | number:2 }}元。</div>
+                                        <div class="btnbox">
+                                            <button class="heta" type="button"  ng-click="maiGeiTa(item.id)">卖给ta</button>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                            <!-- <ion-infinite-scroll ng-if="!noMore" on-infinite="loadMore()" distance="1%">
+                            </ion-infinite-scroll> -->
+                        </ion-scroll>
+                    </li>
+                    <li id="show4" ng-class="{'showactive':option1 == 'tab2'}">
+                        <div class="mui-scroll-wrapper scw" id="scroll4">
+                            <div class="mui-scroll ms">
+                                <ul class="messagebox" href="#topPopover">
+                                    <li ng-repeat="item in tradeList">
+                                        <div class="code">
+                                            <div class="codeleft">
+                                                <div class="circle"></div>
+                                                <p>单号：{{item.order_no}}</p>
+                                            </div>
+                                            <div class="time" ng-if="item.trade_status == '0'">{{item.create_time * 1000 | date:'yyyy-MM-dd HH:mm'}}</div>
+                                            <div class="time" ng-if="item.trade_status != '0'">{{item.trade_time * 1000 | date:'yyyy-MM-dd HH:mm'}}</div>
+                                        </div>
+                                        <div class="info" v-text="lists.remark">{{item.msg}}</div>
+                                        <div class="btnbox">
+                                                <button class="look" type="button"  class="bottomPopover" ng-if="item.is_buyer && ( item.trade_status == 1 || item.trade_status == 2)" ng-click="showZiLiao(item.user_ID,'卖家资料')">卖家资料</button>
+                                                <button class="look" type="button"  class="bottomPopover" ng-if="!item.is_buyer && ( item.trade_status == 1 || item.trade_status == 2) "  ng-click="showZiLiao(item.user_ID,'买家资料')">买家资料</button>
+                                            <button class="succ" type="button" ng-if="item.is_buyer && item.trade_status == 1" ng-click="queRenJiaoYi(item.id,'buy')">确认交易</button>
+                                            <button class="succ" type="button" ng-if="!item.is_buyer && item.trade_status == 2 " ng-click="queRenJiaoYi(item.id,'sell')">确认交易</button>
+                                            <button class="esc" type="button" ng-if="item.is_buyer && item.trade_status == 1" ng-click="quXiaoJiaoYi(item.id)" >取消交易</button>
+                                            <button class="esc" type="button" ng-if="item.trade_status == '0'" ng-click="quXiaoDingDan(item.id)" >取消挂单</button>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="shuaxin" ng-click="doRefresh()"><span class="iconfont" style="font-size:2rem">&#xe611;</span></div>
+        </div>
+    </ion-content>
+
+
+    <div class="confirm_wrapper guaDan" ng-show="popup.isShow">
+            <div class="confirm_box">
+                <div class="confirm_title">{{popup.role}}</div>
+                <div class="confirm_info">
+                    <p >开户名：{{popup.realname || '暂无'}} <span ng-if="popup.realname" ng-click="copy(popup.realname)">复制</span></p>
+                    <p >开户行：{{popup.bankName || '暂无'}} <span ng-if="popup.bankName" ng-click="copy(popup.bankName)">复制</span></p>
+                    <p >账号：{{popup.bankcard || '暂无' }} <span ng-if="popup.bankcard" ng-click="copy(popup.bankcard)">复制</span></p>
+                    <p >微信：{{popup.wechat || '暂无'}} <span ng-if="popup.wechat" ng-click="copy(popup.wechat)">复制</span></p>
+                    <p >支付宝：{{popup.alipay || '暂无'}} <span ng-if="popup.alipay" ng-click="copy(popup.alipay)">复制</span></p>
+                    <p >手机号：{{popup.mobile || '暂无'}} <span ng-if="popup.mobile" ng-click="copy(popup.mobile)">复制</span></p>
+                    
+                </div>
+                <div class="confirm_btns">
+                    <div class="confirm_btn_cancel" ng-click="confirmAction('0')">关闭</div>
+                    <!-- <div class="confirm_btn_yes" ng-click="confirmAction('1')">详情</div> -->
+                </div>
+            </div>
+        </div>
+
+</ion-view>

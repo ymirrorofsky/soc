@@ -1,0 +1,36 @@
+<ion-view view-title="实名认证" hide-nav-bar="true">
+    <ion-header-bar class="bar-calm header-back">
+        <div class="buttons">
+            <button class="button iconfont icon-back1 button-clear" ng-click="$ionicGoBack()">返回</button>
+        </div>
+        <h1 class="title">
+            <span>实名认证</span>
+        </h1>
+    </ion-header-bar>
+    <ion-content class="realName bodybg-normal">
+        <div class="mui-content" id="realname">
+            <div class="shuru" ng-if="type == 'alipay'">
+
+                <div class="input">
+                    <label for="username">支付宝</label>
+                    <input type="text" name="username" id="username" ng-model='info.val' placeholder="请输入您的支付宝">
+                </div>
+
+                <button type="button" class="post" ng-click="shiMing()">提交</button>
+                <br>
+
+            </div>
+            <div class="shuru" ng-if="type == 'wechat'">
+
+                <div class="input">
+                    <label for="username">微信号</label>
+                    <input type="text" name="username" id="username" ng-model='info.val' placeholder="请输入您的微信号">
+                </div>
+
+                <button type="button" class="post" ng-click="shiMing()">提交</button>
+                <br>
+
+            </div>
+
+        </div>
+    </ion-content>

@@ -1,0 +1,118 @@
+<ion-view title="个人资料" hide-nav-bar="true" hide-back-button="true">
+    <ion-header-bar class="bar-calm header-back">
+        <div class="buttons">
+            <button class="button iconfont icon-back1 button-clear" ui-sref='tab.my'>返回</button>
+        </div>
+        <h1 class="title">个人资料</h1>
+    </ion-header-bar>
+    <ion-content class='geRenZiLiao conbg-vrc' overflow-scroll="false">
+            <ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()"></ion-refresher>
+
+
+        <div class="mui-content" id="person" style="padding-top:.2rem">
+            <a class="headbox"  data-title="设置头像">
+                <img ng-src="{{info.avatar || 'img/headimg.jpg'}}" alt="" id="myimg">
+            </a>
+            <ul class="infobox">
+                <li>
+                    <p>上级ID</p>
+                    <div>{{info.pid || '无' }}</div>
+                </li>
+                <li>
+                    <p>我的ID</p>
+                    <div>{{info.number}}</div>
+                </li>
+                <li>
+                    <p>等级</p>
+                    <div>{{info.level}}</div>
+                </li>
+            </ul>
+            <ul class="lists">
+                <li>
+                    <a class="telcheck">
+                        <b>手机号验证</b>
+                        <div>
+                            <span >{{info.mobile}}</span>
+                            <i class="succ" >已认证</i>
+                            <!-- <i class="none" v-show="tel==''">已认证</i> -->
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a  ui-sref='user.realName' ng-if="info.is_smrz == 0">
+                        <b>实名认证</b>
+                        <div>
+                            <i class="none">未认证</i>
+                        </div>
+                    </a>
+                    <a  ui-sref='user.realName({type:"idcard"})' ng-if="info.is_smrz == 1">
+                        <b>实名认证</b>
+                        <div>
+                            <span >{{info.realname}}</span>
+                            <i class="succ" >已认证</i>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref='user.realName'  ng-if="info.is_smrz == 0">
+                        <b>银行卡认证</b>
+                        <div>
+                            <i class="none" >未认证</i>
+                        </div>
+                    </a>
+
+                    <a ui-sref='user.realName({type:"bankcard"})' ng-if="info.is_smrz == 1">
+                        <b>银行卡认证</b>
+                        <div>
+                            <span v-text="openingBank">{{info.bankname}}</span>
+                            <i class="succ" >已认证</i>
+                        </div>
+                    </a>
+                </li>
+                <!--<li>
+                    <a href="" v-show="obligate" data-title="预留手机号">
+                        <b>预留手机号</b>
+                    </a>
+                </li>-->
+            </ul>
+<!--            <div class="iconfont xia">&#xe600;</div>-->
+            <ul class="two">
+                <li>
+                    <a href="" data-title="设置微信" ui-sref='user.zhiFuBaoRen({type:"wechat"})'>
+                        <b>微信</b>
+                        <div style="margin-right:.1rem">
+                            <span v-text="weixin">{{info.wechat}}</span>
+                            <i class="iconfont">&#xe603;</i>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="" data-title="设置支付宝" ui-sref='user.zhiFuBaoRen({type:"alipay"})'>
+                        <b>支付宝</b>
+                        <div style="margin-right:.1rem">
+                            <span v-text="alipay">{{info.alipay}}</span>
+                            <i class="iconfont">&#xe603;</i>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="" data-title="修改登录密码" ui-sref='user.dengMaXiu'>
+                        <b>修改登录密码</b>
+                        <div style="margin-right:.1rem">
+                            <i class="iconfont">&#xe603;</i>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="" :data-title="secondTitle()"  ui-sref='user.jiaoMaXiu'>
+                        <b v-text="secondTitle()">修改交易密码</b>
+                        <div style="margin-right:.1rem">
+                            <i class="iconfont">&#xe603;</i>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </ion-content>
+
+</ion-view>

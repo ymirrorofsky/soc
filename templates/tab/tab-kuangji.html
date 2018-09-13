@@ -1,0 +1,47 @@
+<ion-view title="首页" hide-nav-bar="true" hide-back-button="true">
+	<ion-header-bar class="bar-calm header-back">
+		<h1 class="title">矿机</h1>
+	</ion-header-bar>
+	<ion-content class='kuangji home conbg-vrc'>
+		<ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()"></ion-refresher>
+		<ul class="kuangjiList">
+			<li ng-repeat='item in mymillsList'>
+				<div class="kuangjiList-left">
+					<img ng-src="{{item.thumb}}">
+				</div>
+				<div class="kuangjiList-middle">
+					<h2>{{item.pro_name}}</h2>
+					<p>运行周期：{{item.zhouqi}}天</p>
+					<p>产量/天：{{item.output_oneday}}</p>
+					<p>矿机编号：{{item.number}}</p>
+					<p ng-if="item.status == 1">矿机状态：正在运行</p>
+					<p ng-if="item.status != 1">矿机状态：已停止</p>
+				</div>
+				<div class="kuangjiList-right" ui-sref='user.kuangJiXiangQing({id:item.id})' ng-if="item.status == 1">
+						<span class="buybtn" id='{{item.id}}'>
+	
+							<span>查看</span>
+						</span>
+					</div>
+			</li>     
+
+	
+		</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<ion-infinite-scroll ng-if="noMore" on-infinite="loadMoreGoods()" distance="1%" icon="" immediate-check="false">
+		</ion-infinite-scroll>
+	</ion-content>
+
+</ion-view>

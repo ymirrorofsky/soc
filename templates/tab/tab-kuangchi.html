@@ -1,0 +1,100 @@
+<ion-view view-title="排行榜" hide-nav-bar="true">
+    <ion-header-bar class="bar-calm header-my">
+        <h1 class="title">矿池</h1>
+    </ion-header-bar>
+    <ion-content  class='conbg-vrc kuangchi'>
+			<ion-refresher pulling-text="下拉刷新.." on-refresh="doRefresh()"></ion-refresher>
+				<ul class="kuangchi-top">
+					<li>
+						<p>矿池算力(T)</p>
+						<h2>(截止昨天)</h2>
+						<div >{{info.suanli}}</div>
+					</li>
+					<li >
+						<p>总矿工数</p>
+						<h2>(截止昨天)</h2>
+						<div >{{info.teamNum}}</div>
+					</li>
+				</ul>
+				<ul class="kuangchi-tap">
+					<li data-index="show1" ng-class="{'tapactive':type == 1}" ng-click="typeS('1')"><span>直推</span></li>
+					<li data-index="show2" ng-class="{'tapactive':type == 2}" ng-click="typeS('2')"><span>团队</span></li>
+				</ul>
+				<ul class="kuangchi-peopple">
+				<!--直推-->
+					<li  class="kuangchi-dir " ng-class="{'showactive':type == 1}">
+						<div >
+							<ul >
+								<li ng-repeat="item in info.zhitui" >
+									<div class="head"><img ng-src="{{item.avatar || 'img/headimg.jpg'}}" onerror="this.src='img/headimg.jpg'" ></div>
+									<div class="leftbox">
+										<p><span>id:{{item.number}}</span></p>
+										<p >{{item.level}}</p>
+									</div>
+									<div class="middlebox">
+										<p >算力:{{item.suanli}}</p>
+										<p >直推:{{item.zhituiNum}}人</p>
+									</div>
+									<div class="rightbox">
+										<p >矿机：{{item.kuangjiNum}}台</p>
+										<p >团队：{{item.teamNum}}人</p>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<!--团队-->
+					<li class="kuangchi-team" ng-class="{'showactive':type == 2}">
+						<div >
+							<ul >
+								<li ng-repeat="item in info.team" >
+									<div class="head"><img ng-src="img/headimg.jpg" ></div>
+									<div class="leftbox">
+										<p><span>id:{{item.number}}</span></p>
+										<p >{{item.level}}</p>
+									</div>
+									<div class="middlebox">
+										<p >算力:{{item.suanli}}</p>
+									<p >直推:{{item.zhituiNum}}</p>
+									</div>
+									<div class="rightbox">
+										<p >矿机:{{item.kuangjiNum}}台</p>
+										<p >团队:{{item.teamNum}}人</p>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			<!--直推信息-->
+			<!--<div id="popover" class="mui-popover mui-popover-bottom">
+				<div v-show="onepopo==true">
+					<div class="toptitle">
+						<p>直推信息</p>
+						<div class="iconfont closebtn" v-on:tap="closeinfo">&#xe65d;</div>
+					</div>
+					<ul class="zhituibox">
+						<li><span>总直推数:</span> <span v-text="zhituiobj.num"></span></li>
+						<li><span>四级矿工:</span> <span v-text="zhituiobj.four"></span></li>
+						<li><span>三级矿工:</span> <span v-text="zhituiobj.three"></span></li>
+						<li><span>二级矿工:</span> <span v-text="zhituiobj.two"></span></li>
+						<li><span>一级矿工:</span> <span v-text="zhituiobj.one"></span></li>
+						<li><span>在产矿工:</span> <span v-text="zhituiobj.common"></span></li>
+					</ul>
+				</div>
+				<div class="account" id="account" v-show="twopopo==true">
+					<div class="toptitle">
+						<p>个人信息</p>
+						<div class="iconfont closebtn" v-on:tap="closeinfo">&#xe65d;</div>
+					</div>
+					<ul class="conlist">
+						<li><span>ID</span> <input type="text" name="" id="accountName" :value="tradeinfo.id" class="accountinput" readonly> <button type="button" class="copy" data-clipboard-target="#accountName">复制</button></li>
+						<li><span>TEL</span> <input type="text" name="" id="openingBank" :value="tradeinfo.tel" class="accountinput" readonly> <button type="button" class="copy" data-clipboard-target="#openingBank">复制</button></li>
+					</ul>
+				</div>
+			</div>-->
+			<!--<ion-infinite-scroll ng-if="!noMore" on-infinite="loadMore()" distance="1%"
+			icon="" immediate-check="false"></ion-infinite-scroll>-->
+    </ion-content>
+
+</ion-view>

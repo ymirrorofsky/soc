@@ -1,0 +1,188 @@
+<ion-view title="首页" hide-nav-bar="true" hide-back-button="true">
+	<ion-header-bar class="bar-calm header-back">
+		<h1 class="title">矿市</h1>
+	</ion-header-bar>
+	<ion-content class='kuangshi conbg-vrc'>
+		<ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()"></ion-refresher>
+		<div class="kuangshibox" style="position:relative">
+			<ul class="kuangshinum">
+				<li>
+					<span style="font-size:28px;">{{info.worth}}</span>
+					<i style="font-style:normal">CNY</i>
+				</li>
+				<li>
+					<p>幅：{{info.fu}}</p>
+					<p>高：{{info.gao}}</p>
+				</li>
+				<li>
+					<p>量：{{info.liang}}</p>
+					<p>低：{{info.di}}</p>
+				</li>
+			</ul>
+			<ul class="tapbox">
+				<li class="tapactive" data-index="1" ng-click="typeS('1')" ng-class="{'tapactive':type == 1}">
+					<span>分时线
+						<i></i>
+					</span>
+				</li>
+				<li data-index="2" ng-click="typeS('2')" ng-class="{'tapactive':type == 2}">
+					<span>日线
+						<i></i>
+					</span>
+				</li>
+			</ul>
+			<ul class="showbox">
+				<li id="show1" class="showactive" ng-class="{'showactive':type == 1}">
+					<div class="mui-scroll-wrapper scw">
+						<div class="mui-scroll ms" id="scroll1">
+							<div class="mui-content-padded">
+								<div class="chart" id="lineChart" style="height:15.38rem"></div>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li id="show2" ng-class="{'showactive':type == 2}">
+					<div class="mui-scroll-wrapper scw">
+						<div class="mui-scroll ms" id="scroll2">
+							<div class="mui-content-padded">
+								<div class="chart" id="lineChart2" style="height:15.38rem"></div>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<ul class="tapbox ks_option2">
+				<li ng-click="option2S('1',$event)" ng-class="{'tapactive':option2 == '1'}">
+					<span>买入
+						<i></i>
+					</span>
+				</li>
+				<li ng-click="option2S('2')" ng-class="{'tapactive':option2 == '2'}" class="ks_maichu">
+					<span>卖出
+						<i></i>
+					</span>
+				</li>
+				<li ng-click="option2S('3')" ng-class="{'tapactive':option2 == '3'}" class="ks_maichu">
+					<span>矿市卖出
+						<i></i>
+					</span>
+				</li>
+			</ul>
+			<ul class="showbox2 guoNeiGuaDan">
+				<li ng-class="{'showactive':option2 == '1'}" class="guoNeiGuaDan ks_kanBan">
+					<ion-scroll class="mui-scroll-wrapper scw" id="scroll3" overflow-scroll="false">
+						<div class="mui-scroll ms">
+							<ul class="messagebox" href="#topPopover">
+								<li ng-repeat="item in displayListBuy">
+									<div class="code">
+										<div class="codeleft">
+											<div class="circle"></div>
+											<p>单号：{{item.order_no}}</p>
+										</div>
+										<div class="time">{{item.create_time * 1000 | date:'yyyy-MM-dd'}}</div>
+									</div>
+									<div class="info">ID:{{item.seller_user_ID}}挂卖{{item.num}}{{globalInfo.noun.coin_name}}，单价{{item.unit_price}}元，总计{{item.unit_price * item.num | number:2 }}元。</div>
+									<div class="btnbox">
+										<button class="heta" type="button" ng-click="maiGeiTa(item.id,'1')">买入</button>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<ion-infinite-scroll ng-if="!noMore" on-infinite="loadMore()" distance="1%">
+						</ion-infinite-scroll>
+					</ion-scroll>
+				</li>
+				<li ng-class="{'showactive':option2 == '2'}" class="guoNeiGuaDan ks_kanBan">
+					<ion-scroll class="mui-scroll-wrapper scw" id="scroll3" overflow-scroll='false'>
+						<div class="mui-scroll ms">
+							<ul class="messagebox" href="#topPopover">
+								<li ng-repeat="item in displayListSell">
+									<div class="code">
+										<div class="codeleft">
+											<div class="circle"></div>
+											<p>单号：{{item.order_no}}</p>
+										</div>
+										<div class="time">{{item.create_time * 1000 | date:'yyyy-MM-dd'}}</div>
+									</div>
+									<div class="info">ID:{{item.buyer_user_ID}}挂买{{item.num}}{{globalInfo.noun.coin_name}}，单价{{item.unit_price}}元，总计{{item.unit_price * item.num | number:2 }}元。</div>
+									<div class="btnbox">
+										<button class="heta" type="button" ng-click="maiGeiTa(item.id,'2')">卖给ta</button>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<ion-infinite-scroll ng-if="!noMore" on-infinite="loadMore()" distance="1%">
+						</ion-infinite-scroll>
+					</ion-scroll>
+				</li>
+				<li id="show3" ng-class="{'showactive':option2 == '3'}" ng-if="option2 == '3'">
+					<div>
+						<div id="scroll3">
+							<ul>
+								<li class="input">
+									<label for="idnum">ID</label>
+									<input type="text" id="idnum" placeholder="请输入买家的ID号" ng-model="info.user_ID">
+								</li>
+								<li class="input">
+									<label for="selnum">数量</label>
+									<input type="text" id="selnum" placeholder="请输入售出的数量" ng-model="info.num">
+								</li>
+								<li>
+									<p style="color: #999;font-size: 12px;margin-top:5px">*交易手续费{{info.charge}}%；如转100{{globalInfo.noun.coin_name}}，系统将扣{{100 * info.charge / 100}}{{globalInfo.noun.coin_name}}。</p>
+								</li>
+								<li class="maichu">
+									<a class="selbtn" id="selbtn" ng-click="maiChu('0')">卖出</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</ion-content>
+	<script id="my-modal.html" type="text/ng-template">
+	  <ion-modal-view id="modalmaimai">
+	    <ion-content class="kuangshi">
+			<ul class="showbox2 guoNeiGuaDan">
+				<li class="guoNeiGuaDan showactive">
+					<div class="guoneibox" style="position:relative">
+						<ul class="guoneinum">
+							<li>
+								<i style="font-size:.24rem;font-style:normal">当前价：</i>
+								<span>{{info.worth}}</span>
+								<i style="font-size:.24rem;font-style:normal">CNY</i>
+							</li>
+						</ul>
+						<div class="mui-input-row mui-input-range field-contain">
+							<div style="margin-top:1.15rem;text-align:center">
+								<input type="text" id="field-range-input" ng-model="info2.worth" placeholder="编辑价格">
+							</div>
+						</div>
+						<div class="mui-input-row mui-input-range field-contain">
+							<div>
+								<input type="range" id="field-range" step="1" value="{{info2.num}}" min="{{info2.min_num}}" max="{{info2.max_num}}" ng-model="info2.num">
+							</div>
+
+							<div style="margin-top:1.15rem;text-align:center">
+								<input type="text" id="field-range-input" ng-model="info2.num" ng-blur="numBlur()" placeholder="输入个数">
+							</div>
+						</div>
+						<div class="guoneitotal">
+							<p><font ng-if="option2 == '1'">买入</font><font ng-if="option2 == '2'">卖出</font>
+								<span>{{info2.num}}个</span>{{globalInfo.noun.coin_name}}，出价
+								<span>{{info2.worth}}元</span>，总价
+								<span v-text="totalprice">{{info2.worth * info2.num || 0 | number:2}}</span>元</p>
+							<button type="button" class="guabuy" ng-click="guaBuyDan()" ng-if="option2 == '1'">挂买单</button>
+							<button type="button" class="guabuy" ng-click="guaSellDan()" ng-if="option2 == '2'">挂卖单</button>
+							<button type="button" class="guabuy" ng-click="closeModalmaimai()" >取消</button>
+						</div>
+					</div>
+				</li>
+			</ul>
+	    </ion-content>
+	  </ion-modal-view>
+	</script>
+	<div class="guaBuyDan_btn" ng-click="openModalmaimai()"  ng-if="option2 == '1' && info2.isShow">买入</div>
+	<div class="guaSellDan_btn guaBuyDan_btn"  ng-click="openModalmaimai()" ng-if="option2 == '2' && info2.isShow">卖出</div>
+	<div class="shuaxin" ng-click="doRefresh()" style="left:0.65rem;bottom:5rem;"><span class="iconfont" style="font-size:2rem;">&#xe611;</span></div>
+</ion-view>

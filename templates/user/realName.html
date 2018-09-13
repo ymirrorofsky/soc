@@ -1,0 +1,77 @@
+<ion-view view-title="实名认证" hide-nav-bar="true">
+    <ion-header-bar class="bar-calm header-back">
+        <div class="buttons">
+            <button class="button iconfont icon-back1 button-clear" ng-click="$ionicGoBack()">返回</button>
+        </div>
+        <h1 class="title">
+            <span>实名认证</span>
+        </h1>
+    </ion-header-bar>
+    <ion-content class="realName bodybg-normal">
+        <div class="mui-content" id="realname">
+            <div class="shuru" ng-if="info.smrzStatus == 0">
+                <p class="tishi">请绑定持卡人本人的银行卡</p>
+                <div class="input">
+                    <label for="username">真实姓名</label>
+                    <input type="text" name="username" id="username" ng-model='info.realname' placeholder="请输入真实姓名">
+                </div>
+                <div class="input">
+                    <label for="idcard">身份证号</label>
+                    <input type="text" name="idcard" id="idcard" ng-model='info.idcard' placeholder="请输入身份证号">
+                </div>
+                <div class="input">
+                    <label for="cardnumber">银行卡号</label>
+                    <input type="text" name="cardnumber" id="cardnumber" ng-model='info.bankcard' placeholder="请输入银行卡号">
+                </div>
+                <div class="input">
+                    <label for="cardnumber">开户行</label>
+                    <input type="text" name="cardnumber" id="cardnumber" ng-model='info.bankname' placeholder="请输入开户行">
+                </div>
+                <p class="tishi">银行预留手机号验证</p>
+                <div class="input">
+                    <label for="banktel">预留手机</label>
+                    <input type="text" name="banktel" id="banktel" ng-model='info.mobile' placeholder="请输入银行预留手机号">
+                </div>
+                <div class="yzbox">
+                    <div class="input">
+                        <label for="yzcode">验证码</label>
+                        <input type="text" name="yzcode" id="yzcode" ng-model='info.code' placeholder="验证码">
+                    </div>
+                    <button class="send" type="button" ng-click="sendCode()" ng-if="!info.bol">发送短信</button>
+                    <button class="send" type="button" ng-click="sendCode()" ng-if="info.bol"  ng-disabled="info.bol">{{info.number}}s后在发送</button>
+                </div>
+                <!--  -->
+                <button type="button" class="post" ng-click="shiMing()" ng-disabled="btnDisabled">提交</button>
+                <br>
+                <p class="tishi">*请务必提交本人信息进行认证，盗用他人信息认证导致封号，责任自负。</p>
+            </div>
+            <div class="show" ng-if="info.smrzStatus == 3 && info.type == 'idcard'">
+                <div class="status">
+                    <img src="img/tag.png" alt="">
+                </div>
+                <div class="myinfo">
+                    <div class="headimg">
+                        <img :src="img/headimg.jpg" alt="" id="myimg">
+                    </div>
+                    <p>{{info.realname}} </p>
+                    <p>{{info.bankcard}}</p>
+                </div>
+            </div>
+            <div class="show" style="padding:1.92rem 1.53rem" ng-if="info.smrzStatus == 3 && info.type == 'bankcard'">
+                <div class="status">
+                    <img src="img/tag.png" alt="">
+                </div>
+                <div class="myinfo">
+                    <p v-text="openingBank" style="text-align:right;margin-bottom:0.76rem;margin-top:0"></p>
+                    <p style="text-align:right;font-size:0.92rem;color:#666;margin-bottom:1.15rem;margin-top:0">储蓄卡</p>
+                    <div class="showcardbox">
+                        <div>****</div>
+                        <div>****</div>
+                        <div>****</div>
+                        <div>{{info.bankcardShow}}</div>
+                    </div>
+                    <p style="font-size:1.15rem;text-align:left;margin-top:1.92rem">持卡人:{{info.realname}}</p>
+                </div>
+            </div>
+        </div>
+    </ion-content>

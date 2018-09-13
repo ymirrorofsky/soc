@@ -1,0 +1,34 @@
+<ion-view view-title="消息通知" hide-nav-bar="true">
+        <ion-header-bar class="bar-calm header-back">
+            <div class="buttons">
+                <button class="button iconfont icon-back1 button-clear" ng-click="$ionicGoBack()">返回</button>
+            </div>
+            <h1 class="title">消息通知</h1>
+        </ion-header-bar>
+        <ion-content class="xiaoXiTongZhi bodybg-normal conbg-vrc">
+                <ion-refresher pulling-text="下拉刷新.." on-refresh="doRefresh()"></ion-refresher>
+                <div class="mui-content" id="message">
+                        <ul class="messagebox">
+                                <li ui-sref='user.xiaoXiXiangQing({id:item.id})' ng-repeat="item in list">
+                                    <a class="messlist" >
+                                        <div class="time">{{item.create_time}}</div>
+                                        <div class="middlebox">
+                                            <div class="title" >{{item.title}}</div>
+                                            <div class="jiantou iconfont">&#xe603;</div>
+                                        </div>
+                                        <div class="info">
+                                            <!-- <div class="red" ></div> -->
+                                            <div class="infocon" >{{item.info}}</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                    </div>
+                    <ion-infinite-scroll ng-if="!noMore" on-infinite="loadMore()" distance="1%"
+                    icon="" immediate-check="false"></ion-infinite-scroll>
+        </ion-content>
+    
+
+    </ion-view>
+    
+    

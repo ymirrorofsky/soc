@@ -1,0 +1,35 @@
+<ion-view view-title="账号注册" hide-nav-bar="true">
+
+
+
+	<ion-content class="register conbg-vrc" overflow-scroll="false">
+		<div class="mui-content" id="reg">
+			<div class="iconbox">
+				<img src="img/vrcicon.png" alt="">
+			</div>
+			<p class="titlebox">创建账户</p>
+			<div class="selbox">
+				<select name="reason" id="reason" class="selbar">
+					<option value="86" data-other="86" data-place="中国（+86）">中国（+86）</option>
+				</select>
+			</div>
+			<input type="number" name="" id="tel" placeholder="手机号" ng-model="reg.mobile">
+			<div class="yzcode">
+				<input type="text" name="" id="yzcode" placeholder="验证码" ng-model="reg.mobileCode">
+				<button class="send" type="button" ng-if="!reg.bol" ng-click="getSmsCaptcha()">发送短信</button>
+				<button class="send" type="button" ng-if="reg.bol">{{reg.number}}秒后再发送</button>
+			</div>
+			<div class="yzcode">
+				<input type="text" name="" id="imgcode" placeholder="图片验证码" ng-model="reg.pictureCaptcha">
+				<div class="hqimg" style="width:6.53rem;margin-left:1.15rem">
+					<img src="" style="width:100%" id="yzimg" ng-src='{{pictureCaptchaUrl}}' update-img>
+				</div>
+			</div>
+			<input type="text" name="" id="pass" placeholder="创建密码" ng-model="reg.password" style="width:100%">
+			<input type="number" name="" id="parentid" placeholder="推荐人：ID或手机号" ng-model="reg.pid">
+			<button class="freeget" type="button" ng-click="submit()">注册</button>
+			<a class="login" style="text-align:center;display:block;margin-top:.76rem" ui-sref="auth.login">返回登录页</a>
+		</div>
+
+	</ion-content>
+</ion-view>

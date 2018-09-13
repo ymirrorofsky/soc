@@ -1,0 +1,19 @@
+<ion-view view-title="公会招募" hide-nav-bar="true">
+	<ion-header-bar class="bar-calm header-back">
+		<div class="buttons">
+			<button class="button iconfont icon-back1 button-clear" ng-click="$ionicGoBack()">返回</button>
+		</div>
+		<h1 class="title">公会招募</h1>
+	</ion-header-bar>
+	<ion-content class="qrcode bodybg-normal" >
+		<img  alt="" id="img" ng-src="{{imgSrc}}" />
+
+		<div class="qrcode_link">
+			<span>分享链接</span>
+			<span style="    word-break: break-word;">{{link}}</span>
+			<!--分享链接:<br />-->
+			
+		</div>
+		<div class="qrcode_btn" ng-click="copy(link)">点击复制</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,29 @@
+<ion-view view-title="绑定手机号" hide-nav-bar="true">
+	<ion-header-bar class="bar-calm header-back">
+		<div class="buttons">
+			<button class="button iconfont icon-back1 button-clear" ng-click="$ionicGoBack()">返回</button>
+		</div>
+		<h1 class="title"><span>绑定手机号</span></h1>
+	</ion-header-bar>
+	<ion-content class="bodybg-normal">
+		<div class="real-count" >
+			<ul>
+				<li>
+					<label>手机号码</label>
+					<input type="text" placeholder="请输入号码" maxlength="11" ng-model="pageData.mobile">
+				</li>
+				<li>
+					<label>短信验证</label>
+					<input type="text" placeholder="输入验证码" maxlength="9" ng-model="pageData.code">
+					<button class="button button-small button-calm btn" ng-click="getCode(pageData.mobile)" ng-disabled = 'getCaptchaSuccess'>
+						<span ng-if="!getCaptchaSuccess">获取验证码</span><span ng-if="getCaptchaSuccess">重新获取{{reg.number}}s</span>
+					</button>
+				</li>
+			</ul>
+			<div class="padding sure-btn">
+				<button class="button button-block button-calm" ng-click="savePsd()">确定</button>
+			</div>
+		</div>
+
+	</ion-content>
+</ion-view>

@@ -1,0 +1,249 @@
+<ion-view title="首页" hide-nav-bar="true" hide-back-button="true">
+	<!-- <ion-header-bar class="bar-calm header-back">
+		<h1 class="title">个人中心</h1>
+	</ion-header-bar> -->
+	<ion-content class='my conbg-vrc'>
+		<!--<ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()"></ion-refresher>-->
+		<div class="conbg-vrc" id="mine">
+			<div class="mytopbox">
+				<div class="headimg">
+					<a href="" id="person" data-title="设置头像">
+						<img id="myimg" ng-src="img/headimg.jpg">
+					</a>
+				</div>
+				<div class="toptext">
+					<p>ID：{{info.number}}</p>
+					<p>等级：{{info.level}}</p>
+				</div>
+				<a class="norenzheng" ui-sref="user.realName" style="color:#666" data-title="实名认证" ng-if="info.is_smrz == 0">未认证</a>
+				<a class="renzheng" ui-sref='user.geRenZiLiao' ng-click="goGeRenZiLiao()" style="color:#00b738" data-title="个人资料" ng-if="info.is_smrz == 1">已认证</a>
+				<ul class="topbtnbox">
+					<li>
+						<a ui-sref='user.xiaoXiTongZhi' class="iconfont" id="message" data-title="消息通知">&#xe69f;</a>
+						<!-- <div v-show="isRead!=0" class="redcircle"></div> -->
+					</li>
+					<li>
+						<a ui-sref='user.sheZhi' class="iconfont" id="setting" data-title="设置">&#xe632;</a>
+					</li>
+				</ul>
+			</div>
+			<div class="mynumberbox">
+				<p>资产总额</p>
+				<div>{{info.total_vrc | number:2}}</div>
+				<ul>
+					<li>
+						<span class="iconfont" id="keyong">&#xe605;</span>
+						<span>可用{{globalInfo.noun.coin_name}}：{{info.all_vrc | number:2}}</span>
+					</li>
+					<li>
+						<span class="iconfont" id="dongjie">&#xe63a;</span>
+						<span>冻结{{globalInfo.noun.coin_name}}：{{info.freeze_vrc | number:2}}</span>
+					</li>
+				</ul>
+			</div>
+			<ul class="mygongnengbox">
+				<li>
+					<a href="#/user/geRenZiLiao" data-title="个人资料">
+						<div class="icon">
+							<i class="smallicon1"></i>
+						</div>
+						<span>个人资料</span>
+					</a>
+				</li>
+				<li>
+					<a data-title="账单中心" ui-sref='user.zhangDan'>
+						<div class="icon">
+							<i class="smallicon2"></i>
+						</div>
+						<span>账单中心</span>
+					</a>
+				</li>
+				<li>
+					<a ui-sref='user.bangZhuZhongXin' data-title="交易大厅">
+						<div class="icon">
+							<i class="smallicon_help"></i>
+						</div>
+						<span>帮助中心</span>
+					</a>
+				</li>
+				<li>
+					<a ui-sref="tab.kuangshi" data-title="求购挂单">
+						<div class="icon">
+							<i class="smallicon_help"></i>
+						</div>
+						<span>求购挂单</span>
+					</a>
+				</li>
+				<!-- <li>
+					<a data-title="国内挂单" href="#/user/guoNeiGuaDan">
+						<div class="icon">
+							<i class="smallicon3"></i>
+						</div>
+						<span>国内挂单</span>
+					</a>
+				</li>
+				<li>
+					<a href="#/user/xinShouGuaDan" data-title="新手挂单">
+						<div class="icon">
+							<i class="smallicon5"></i>
+						</div>
+						<span>新手挂单</span>
+					</a>
+				</li> -->
+				<li>
+					<a ui-sref='user.jiaoYiDaTing' data-title="交易大厅">
+						<div class="icon">
+							<i class="smallicon5"></i>
+						</div>
+						<span>交易大厅</span>
+					</a>
+				</li>
+				<li style="margin-top:30px" ui-sref='user.intro'>
+					<a>
+						<div class="icon">
+							<i class="smallicon_help"></i>
+						</div>
+						<span>护盘大使</span>
+					</a>
+				</li>
+				<li style="margin-top:30px" ui-sref='user.phoneTopUp'>
+					<a>
+						<div class="icon">
+							<i class="smallicon_save"></i>
+						</div>
+						<span>手机充值</span>
+					</a>
+				</li>
+
+				<li style="margin-top:30px" ui-sref='user.fuelTopUp'>
+					<a>
+						<div class="icon">
+							<i class="smallicon_save"></i>
+						</div>
+						<span>加油卡充值</span>
+					</a>
+				</li>
+
+				<li style="margin-top:30px" ui-sref='user.tuiJianMa({id:info.id})'>
+					<a>
+						<div class="icon">
+							<i class="smallicon_qrcode"></i>
+						</div>
+						<span>推荐分享</span>
+					</a>
+				</li>
+				<li style="margin-top:30px">
+					<a data-title="客服中心" ui-sref='user.kefuZhongXin'>
+						<div class="icon">
+							<i class="smallicon4"></i>
+						</div>
+						<span>客服中心</span>
+					</a>
+				</li>
+
+				<li style="margin-top:30px">
+					<a ui-sref='user.fanKuiZhongXin' data-title="交易大厅">
+						<div class="icon">
+							<i class="smallicon_feedback"></i>
+						</div>
+						<span>反馈中心</span>
+					</a>
+				</li>
+				<li style="margin-top:30px">
+					<a ng-click="developing()">
+						<div class="icon">
+							<i class="smallicon_mall"></i>
+						</div>
+						<span>绿色商城</span>
+					</a>
+				</li>
+				<li style="margin-top:30px" ng-click="developing()">
+					<a  data-title="交易大厅">
+						<div class="icon">
+							<i class="smallicon_feedback"></i>
+						</div>
+						<span>应用钱包</span>
+					</a>
+				</li>
+
+
+				<!--<li style="margin-top:30px" ui-sref='user.WenZhangLieBiao'>
+							<a >
+								<div class="icon">
+									<i class="smallicon_save"></i>
+								</div>
+								<span>节约之路</span>
+							</a>
+						</li>-->
+
+
+
+				<li style="margin-right:0"></li>
+			</ul>
+		</div>
+		<!--<div class="commonend-empty" ng-if="!noMore">
+			没有更多了..
+		</div>-->
+		<!--<ion-infinite-scroll ng-if="noMore" on-infinite="loadMoreGoods()" distance="1%" icon="" immediate-check="false">
+		</ion-infinite-scroll>-->
+
+
+
+	</ion-content>
+	<!-- ng-if="confirmShow" -->
+	<div class="confirm_wrapper" ng-if="popup.isShow">
+		<div class="confirm_box">
+			<div class="confirm_title">最新公告</div>
+			<div class="confirm_info">
+				<p style="text-align:center;color:#fff; margin-bottom: 10px;font-size: 1.1rem;">{{popup.title}}</p>
+				<p style="color:#fff;font-size: 1.1rem;" id="popupInfo"></p>
+			</div>
+			<div class="confirm_btns">
+				<div class="confirm_btn_cancel" ng-click="confirmAction('0')">关闭</div>
+				<div class="confirm_btn_yes" ng-click="confirmAction('1')">详情</div>
+			</div>
+		</div>
+	</div>
+
+	<script id="my-modal.html" type="text/ng-template">
+	  <ion-modal-view id="modalmaimai">
+	   <ion-content class="cancel_list">
+
+
+	 <div style="    padding: 0.5rem;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    background: #42ad2c;
+    color: #fff;">超时订单,请自行处理</div>
+
+	 <div class="rec1_item" >
+            <div class="rec1_i_info">
+                <span class="rec1_i_num">卖家ID</span>
+                <span class="rec1_i_time">订单号</span>
+            </div>
+     </div>
+	 <div class="rec1_item" ng-repeat="item in informList">
+            <div class="rec1_i_info">
+                <span class="rec1_i_num">{{item.buyer_user_ID}}</span>
+                <span class="rec1_i_time">{{item.order_no}}</span>
+            </div>
+
+		</div>	
+			 <div class="rec1_item" ng-repeat="item in informList">
+            <div class="rec1_i_info">
+                <span class="rec1_i_num">{{item.buyer_user_ID}}</span>
+                <span class="rec1_i_time">{{item.order_no}}</span>
+            </div>
+
+		</div>	
+	 <div class="cancel_list_btns">
+	 <div class="" style="border-right:1px solid #68d452" ng-click="goJYDT()">查看详情</div>
+	 <div class="" ng-click="closeModalmaimai()">关闭</div>
+	 </div>
+
+	    </ion-content>
+	  </ion-modal-view>
+	</script>
+
+
+</ion-view>

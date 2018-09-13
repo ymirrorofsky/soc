@@ -1,0 +1,11 @@
+<ion-view hide-nav-bar='true'>
+	<ion-slide-box  style="height:100%" delegate-handle="slideimgs" class='intropageslide' >
+		<!--on-slide-changed="slideChanged($index)"-->
+		<ion-slide ng-repeat="item in info track by $index">
+			<div id="logo" style="height:100%;width: 100%;">
+				<img src="{{item.thumb}}" style="height:100%;width: 100%;">
+			</div>
+			<div ng-if='($index+1) == info.length' ui-sref='tab.online' style="position:fixed;bottom:7vh;left:38vw;width:24vw;height:40px;line-height:40px;text-align:center;background:rgba(0,0,0,0.1);border-radius:5px;color: #fff;">立即进入</div>
+		</ion-slide>
+	</ion-slide-box>
+</ion-view>

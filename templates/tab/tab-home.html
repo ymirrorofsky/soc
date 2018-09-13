@@ -1,0 +1,26 @@
+<ion-view title="首页" hide-nav-bar="true" hide-back-button="true">
+		<ion-header-bar class="bar-calm header-back">
+		<h1 class="title">机市</h1>
+	</ion-header-bar>
+	<ion-content class='home conbg-vrc' >
+		<ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()"></ion-refresher>
+
+		    <ul class="kuangjiList">
+				<li ng-repeat='item in millsList'>
+					<div class="kuangjiList-left"><img ng-src="{{item.thumb}}"></div>
+					<div class="kuangjiList-middle">
+						<h2 >{{item.title}}</h2>
+						<p >算力：{{item.suanli}}T</p>
+						<p >运行周期：{{item.zhouqi}}天</p>
+						<p >收益总量：{{item.total}}{{globalInfo.noun.coin_name}}</p>
+					</div>
+					<div class="kuangjiList-right" ng-click="gouMaiKuangJi(item.id)"><span class="buybtn" id='{{item.id}}'><i class="iconfont ion-ios-cart"></i><span>{{item.price}}{{globalInfo.noun.coin_name}}</span></span>
+					</div>
+				</li>
+			</ul>
+
+		<ion-infinite-scroll ng-if="!noMore" on-infinite="loadMoreGoods()" distance="1%" icon="" immediate-check="false">
+		</ion-infinite-scroll>
+	</ion-content>
+		
+</ion-view>

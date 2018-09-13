@@ -1,0 +1,42 @@
+<ion-view view-title="忘记交易密码" hide-nav-bar="true">
+    <ion-header-bar class="bar-calm header-back">
+        <div class="buttons">
+            <button class="button iconfont icon-back1 button-clear" ng-click="$ionicGoBack()">返回</button>
+        </div>
+        <h1 class="title">
+            <span>忘记交易密码</span>
+        </h1>
+    </ion-header-bar>
+    <ion-content class="realName bodybg-normal">
+        <div class="mui-content" id="realname">
+            <div class="shuru" >        
+                <div class="input">
+                    <label for="username">手机号</label>
+                    <input type="text" name="username" id="username" ng-model='info.mobile' placeholder="请输入手机号">
+                </div>
+                <div class="yzbox">
+                    <div class="input">
+                        <label for="yzcode">验证码</label>
+                        <input type="text" name="yzcode" id="yzcode" ng-model='info.code' placeholder="验证码">
+                    </div>
+                    <button class="send" type="button" ng-click="sendCode()" ng-if="!info.bol">发送短信</button>
+                    <button class="send" type="button" ng-click="sendCode()" ng-if="info.bol"  ng-disabled="info.bol">{{info.number}}s后在发送</button>
+                </div>
+                <div class="input">
+                    <label for="idcard">新密码</label>
+                    <input type="text" name="idcard" id="idcard" ng-model='info.newPwd' placeholder="请输入新密码">
+                </div>
+                <div class="input">
+                    <label for="cardnumber">重复密码</label>
+                    <input type="text" name="cardnumber" id="cardnumber" ng-model='info.surePwd' placeholder="请确认密码">
+                </div>
+
+
+            
+                <button type="button" class="post" ng-click="xiuGai()">提交</button>
+                <br>
+         
+            </div>
+
+        </div>
+    </ion-content>

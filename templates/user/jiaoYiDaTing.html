@@ -1,0 +1,117 @@
+<ion-view view-title="交易大厅" hide-nav-bar="true">
+    <ion-header-bar class="bar-calm header-back">
+        <div class="buttons">
+            <button class="button iconfont icon-back1 button-clear" ng-click="$ionicGoBack()">返回</button>
+        </div>
+        <h1 class="title">
+            <span>交易大厅</span>
+        </h1>
+    </ion-header-bar>
+    <ion-content class="jiaoyidating bodybg-normal">
+            <ion-refresher pulling-text="下拉刷新.." on-refresh="doRefresh()"></ion-refresher>
+        <div class="kuangshi">
+            <ul class="tapbox ks_option2">
+                <li ng-click="optionS('1')" ng-class="{'tapactive':option == '1'}">
+                    <span>买入
+                        <i></i>
+                    </span>
+                </li>
+                <li ng-click="optionS('2')"  ng-class="{'tapactive':option == '2'}" class="ks_maichu">
+                    <span>卖出
+                        <i></i>
+                    </span>
+                </li>
+
+                <li ng-click="optionS('0')"  ng-class="{'tapactive':option == '0'}" class="ks_maichu">
+                    <span>矿市
+                        <i></i>
+                    </span>
+                </li>
+                <li ng-click="optionS('3')"  ng-class="{'tapactive':option == '3'}" class="ks_maichu">
+                    <span>完成
+                        <i></i>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div class="guoNeiGuaDan">
+            <ul class="showbox2">
+                <li id="show4" style="display:block">
+                    <ul class="messagebox" href="#topPopover" style="margin-bottom: 3rem;">
+                        <li ng-repeat="item in tradeList">
+                            <div class="code">
+                                <div class="codeleft">
+                                    <div class="circle"></div>
+                                    <p>单号：{{item.order_no}}</p>
+                                </div>
+                                <div class="time" ng-if="item.trade_status == '0'">{{item.create_time * 1000 | date:'yyyy-MM-dd HH:mm'}}</div>
+                                <div class="time" ng-if="item.trade_status != '0'">{{item.trade_time * 1000 | date:'yyyy-MM-dd HH:mm'}}</div>
+                            </div>
+                            <div class="info" v-text="lists.remark">{{item.msg}}</div>
+
+                            <div class="btnbox" style='padding:0;display:flex;justify-content:space-around'>
+                                <button class="look" type="button" class="bottomPopover" ng-if="item.is_buyer && ( item.trade_status == 1 || item.trade_status == 2)"
+                                    ng-click="showZiLiao(item.user_ID,'卖家资料')">卖家资料</button>
+                                <button class="look" type="button" class="bottomPopover" ng-if="!item.is_buyer && ( item.trade_status == 1 || item.trade_status == 2)"
+                                    ng-click="showZiLiao(item.user_ID,'买家资料',item.id)">买家资料</button>
+                                <button class="succ" type="button" ng-if="item.is_buyer && item.trade_status == 1" ng-click="showPic(item.id,'buy')">确认交易</button>
+                                <button class="succ" type="button" ng-if="!item.is_buyer && item.trade_status == 2 " ng-click="queRenJiaoYi(item.id,'sell')">确认交易</button>
+                                <button class="esc" type="button" ng-if="!item.is_buyer && item.trade_status == 1" ng-click="quXiaoJiaoYi(item.id)">取消交易</button>
+                                <button class="esc" type="button" ng-if="item.trade_status != '0'" ui-sref='user.fanKuiZhongXin'>投诉</button>
+                                <button class="esc" type="button" ng-if="item.trade_status == '0'" ng-click="quXiaoDingDan(item.id)">取消挂单</button>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <ion-infinite-scroll ng-if="!noMore" on-infinite="loadMore()" distance="1%" immediate-check="false"></ion-infinite-scroll>
+    </ion-content>
+    <div class="confirm_wrapper guaDan" ng-show="popup.isShow">
+        <div class="confirm_box">
+            <div class="confirm_title">{{popup.role}}</div>
+            <div class="confirm_info">
+                <p>开户名：{{popup.realname || '暂无'}}
+                    <span ng-if="popup.realname" ng-click="copy(popup.realname)">复制</span>
+                </p>
+                <p>开户行：{{popup.bankName || '暂无'}}
+                    <span ng-if="popup.bankName" ng-click="copy(popup.bankName)">复制</span>
+                </p>
+                <p>账号：{{popup.bankcard || '暂无' }}
+                    <span ng-if="popup.bankcard" ng-click="copy(popup.bankcard)">复制</span>
+                </p>
+                <p>微信：{{popup.wechat || '暂无'}}
+                    <span ng-if="popup.wechat" ng-click="copy(popup.wechat)">复制</span>
+                </p>
+                <p>支付宝：{{popup.alipay || '暂无'}}
+                    <span ng-if="popup.alipay" ng-click="copy(popup.alipay)">复制</span>
+                </p>
+                <p>手机号：{{popup.mobile || '暂无'}}
+                    <span ng-if="popup.mobile" ng-click="copy(popup.mobile)">复制</span>
+                </p>
+                <p style="display:flex;justify-content:center;align-item:center" ng-if="popup.role == '买家资料'">
+                    <img ng-src='{{popup.pingzheng || "img/noPic.jpg"}}' style="width:100%;height:300px" alt="">
+                </p>
+
+            </div>
+            <div class="confirm_btns">
+                <div class="confirm_btn_cancel" ng-click="confirmAction('0')">关闭</div>
+                <!-- <div class="confirm_btn_yes" ng-click="confirmAction('1')">详情</div> -->
+            </div>
+        </div>
+    </div>
+    <div class="confirm_wrapper pic" ng-if="popup.isShowPic">
+        <div class="confirm_box">
+            <div class="confirm_title">上传凭证</div>
+            <div class="confirm_info">
+                <div class="shouju" id="divImg">
+                    <img src="img/add.png" alt="" ng-click="chuanPingZheng()">
+                </div>
+            </div>
+            <div class="confirm_btns">
+                <div class="confirm_btn_cancel" ng-click="confirmAction2('0')">关闭</div>
+                <div class="confirm_btn_yes" ng-click="confirmAction2('1')">确认交易</div>
+            </div>
+        </div>
+    </div>
+</ion-view>

@@ -1,0 +1,50 @@
+<ion-modal-view>
+	<ion-header-bar class="bar-assertive header-back" style='background: transparent;'>
+		<!--<h1 class="title" ng-bind="spTitle || '属性选择'"></h1>
+		<div class="buttons">
+			<button class="button button-clear" ng-click="addCart.hide()">关闭</button>
+		</div>-->
+	</ion-header-bar>
+	<ion-content style='background: rgba(0,0,0,0.3);'>
+		<div style="position: fixed;bottom: 5px;width: 100%;">
+			<div class="attribute-goodsname" style="background: #fff;width: 100%;" class="addcarts">
+					<img ng-src="{{goodsdetail.thumb}}" />
+					<div>
+						<p>￥
+							<span ng-if='good.price!=null&&good.price!=""&&goodPrice'>{{good.price}}</span>
+							<span ng-if='good.price==null||good.price==""||!goodPrice'>{{goodsdetail.spe_price}}</span>
+							<i class="icon ion-close-circled" ng-click="addCart.hide()"></i></p>
+						<h5>库存{{good.count}}{{goodsdetail.unit}}</h5>
+						
+						<h5 ng-if="attributetype">{{goodcart.goodbute1}}{{goodcart.goodbute2}}</h5>
+						<h5 ng-if="!attributetype&&goodsdetail.attrdata!=''">选择属性</h5>
+					</div>
+				</div>
+				<div class="attribute-body" ng-if="goodsdetail.attrdata!=''">
+					<div class="attribute-common attribute1" ng-if="goodsdetail.attrdata!=[]">
+						<h5>{{goodsdetail.attr[0].attrName}}</h5>
+						<ul>
+							<li ng-repeat='item1 in goodsdetail.attr[0].data' id='{{item1}}' ng-class="{'selectstyle':clickstyle1==item1}" ng-click='changebute1(item1)'>{{item1}}</li>
+						</ul>
+					</div>
+					<div class="attribute-common attribute2" ng-if="goodsdetail.attr[1].attrName!=''">
+						<h5>{{goodsdetail.attr[1].attrName}}</h5>
+						<ul >
+							<li ng-repeat='item2 in goodsdetail.attr[1].data' id='{{item2}}' ng-class="{'selectstyle':clickstyle2==item2}" ng-click='changebute2(item2)'>{{item2}}</li>
+						</ul>
+					</div>
+				</div>
+				<div class="attribute-buynum">
+						<span>购买数量</span>
+						<div class="attribute-nums">
+							<i class="iconfont icon-move" ng-click="minusNum()"></i>
+							<input type="text" ng-model="buyNum">
+							<i class="iconfont icon-add" ng-click="addNum()"></i>
+						</div>
+					</div>
+		</div>
+		<button class="add-sure" ng-click="addgoods()" ng-if='addtype'>加入购物车</button>
+		<button class="add-sure" ng-click="buygoods()" ng-if='!addtype'>立即购买</button>
+	</ion-content>
+
+</ion-modal-view>

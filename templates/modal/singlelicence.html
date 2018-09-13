@@ -1,0 +1,11 @@
+<ion-modal-view>
+	<ion-header-bar class="bar-calm header-back">
+		<h1 class="title" ng-bind="spTitle || '店铺证照'"></h1>
+		<div class="buttons">
+			<button class="button button-clear" ng-click="singlelicence.hide()">关闭</button>
+		</div>
+	</ion-header-bar>
+	<ion-content class="padding" style='background: #fff;'>
+		<img ng-src="{{shopsdetail.photo}}" style="width: 90%;margin: 0 auto;display: block;"/>
+	</ion-content>
+</ion-modal-view>

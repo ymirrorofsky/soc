@@ -1,0 +1,34 @@
+<ion-view view-title="修改登录密码" hide-nav-bar="true">
+    <ion-header-bar class="bar-calm header-back">
+        <div class="buttons">
+            <button class="button iconfont icon-back1 button-clear" ng-click="$ionicGoBack()">返回</button>
+        </div>
+        <h1 class="title">
+            <span>修改登录密码</span>
+        </h1>
+    </ion-header-bar>
+    <ion-content class="realName bodybg-normal">
+        <div class="mui-content" id="realname">
+            <div class="shuru">
+                <div class="input">
+                    <label for="username">旧密码</label>
+                    <input type="text" name="username" id="username" ng-model='info.pwd' placeholder="请输入旧密码">
+                </div> 
+
+                <div class="input">
+                    <label for="username">新密码</label>
+                    <input type="text" name="username" id="username" ng-model='info.newPwd' placeholder="请输入新密码">
+                </div>
+                
+                <div class="input">
+                    <label for="username">重复密码</label>
+                    <input type="text" name="username" id="username" ng-model='info.surePwd' placeholder="请确认新密码">
+                </div>
+                <button type="button" class="post" ng-click="xiuGai()">提交</button>
+                <br>
+
+            </div>
+     
+
+        </div>
+    </ion-content>

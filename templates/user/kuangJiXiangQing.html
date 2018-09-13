@@ -1,0 +1,30 @@
+<ion-view view-title="矿机详情" hide-nav-bar="true">
+        <ion-header-bar class="bar-calm header-back">
+            <div class="buttons">
+                <button class="button iconfont icon-back1 button-clear" ng-click="$ionicGoBack()">返回</button>
+            </div>
+            <h1 class="title">
+                <span>矿机详情</span>
+            </h1>
+        </ion-header-bar>
+        <ion-content class="kuangjixiangqing bodybg-normal" style="background: url(img/bg.jpg);">
+                <!-- <div style="position:absolute;z-index:-1;width: 100%;height: 100%">
+                        <canvas id="matrix" height="100%" width="100%"></canvas>
+                    </div> -->
+                <div style="width: 90%;margin-left: 5%;float: left;margin-top: 30px">
+                        <p style="height: 20px;line-height: 20px;font-size: 1em;color:#fff;">我的：{{info.pro_name}}</p>
+                        <div style="text-align: center;position: relative;width: 100%;height: 100%;height: 100%;">
+                            <!--<img src="/Public/web/img/bg2.png" alt=""style="width: 100%"/>-->
+                            <img class="quan loading_circle" src="img/circle.png" alt="" style="margin-top:3rem ">
+                            <!--<img class="wquan" src="/Public/web/img/2.png" alt=""style="width:56%;position: absolute;top: 22%;left: 22%;z-index: 50;"/>-->
+                            <!--<img class="quanb" src="/Public/web/img/2b.png" alt=""style="display:none;width:29%;position: absolute;top: 21%;left: 22%;z-index: 500;"/>-->
+                            <p class="wakuang" data-id="1" style="z-index:1000;width:100px;height:100px;line-height:100px;position: absolute;top: 12rem;;left:50%;margin-left:-50px;margin-top:-60px;color: #FFFFFF;background-color: green;border-radius: 50%;background-color: rgba(0,128,0,0.5)">运行中</p>
+                        </div>
+                        <div style=" position:fixed; bottom:60px;">
+                            <p style="margin-top:-20px;height: 30px;line-height: 30px;font-size:12px;"><span style="font-size:3em;color:#fff">{{info.drVRC}}</span>&nbsp;&nbsp;&nbsp;{{globalInfo.noun.coin_name}}</p>
+                            <p style="height: 30px;line-height: 30px;color:#fff;margin-top:10px;">我的算力：<span>{{info.suanli}}</span>&nbsp;GH/s</p>
+                            <p style="height: 30px;line-height: 30px;font-size:12px;color:#aaa;">累计获得：<span >{{info.output_total}}</span>&nbsp;{{globalInfo.noun.coin_name}}</p>
+                            <p style="height: 30px;line-height: 30px;font-size:10px;color:#aaa;">全网算力：<span>{{info.qwsl}}</span>&nbsp;GH/s</p>
+                        </div>
+                    </div>
+        </ion-content>

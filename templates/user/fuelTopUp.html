@@ -1,0 +1,38 @@
+<ion-view view-title="加油卡充值" hide-nav-bar="true">
+    <ion-header-bar class="bar-calm header-back">
+        <div class="buttons">
+            <button class="button iconfont icon-back1 button-clear" ng-click="$ionicGoBack()">返回</button>
+        </div>
+        <h1 class="title">加油卡充值</h1>
+        <div class="buttons">
+            <button class="button button-clear button-right " ui-sref='user.fuelTopUpRec'>充值记录</button>
+        </div>
+    </ion-header-bar>
+    <ion-content class="bodybg-normal phone_top_up">
+        <div class="yd-donate-count real-count">
+            <ul>
+                <li class="money" style="border-bottom:none;  ">
+                    <label style="line-height:40px;">加油卡号</label>
+                    <input type="text" placeholder="请输入加油卡号" ng-model="info.card" style="line-height:40px;  padding-left: 95px;">
+                </li>
+                <li class="money" style="border-bottom:none;">
+                    <label style="line-height:40px;">持卡人手机号</label>
+                    <input type="text" placeholder="请输入手机号码" ng-model="info.mobile" style="line-height:40px;padding-left: 95px;">
+                </li>
+
+                <li class="money" style="border-bottom:none">
+                    <label style="line-height:40px;">支付密码</label>
+                    <input type="text" placeholder="请输入支付密码" ng-model="info.password" style="line-height:40px;padding-left: 95px;">
+                </li>
+            </ul>
+
+        </div>
+        <div class="ptu_list">
+            <div class="ptu_item" ng-repeat="item in list" ng-click="TopUpS(item.id)" ng-class="{ 'on' : info.id == item.id}">
+                <div class="ptu_sum">{{item.recharge_num}}元</div>
+                <div class="ptu_coin">{{item.consume_num}}个币</div>
+            </div>
+        </div>
+        <div class="ptu_btn" ng-click="TopUp()">充值</div>
+    </ion-content>
+</ion-view>

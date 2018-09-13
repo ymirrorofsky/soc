@@ -1,0 +1,117 @@
+<ion-view view-title="个人信息" hide-nav-bar="true">
+	<ion-header-bar class="bar-calm header-back">
+		<div class="buttons">
+			<button class="button iconfont icon-back1 button-clear" ng-click="$ionicGoBack()">返回</button>
+		</div>
+		<h1 class="title">个人信息</h1>
+	</ion-header-bar>
+	<ion-content class="bodybg-normal">
+		<ul class="t_mess_list">
+			<li ng-click="uploadAvatar()">
+				<a href="" class="flex">
+					<b class="ion-person-stalker assertive"></b>
+					<h3 class="flex_1">修改头像</h3>
+					<i class="ion-ios-arrow-right t_arrow_right"></i>
+				</a>
+			</li>
+			<li ui-sref="user.nickname">
+				<a href="javascript:;" class="flex">
+					<b class="ion-person-stalker assertive"></b>
+					<h3 class="flex_1">昵称</h3>
+					<i class="ion-ios-arrow-right t_arrow_right"></i>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;" class="flex">
+					<b class="ion-locked assertive"></b>
+					<h3 class="flex_1">推荐人</h3>
+					<i style="font-size: 14px;">{{mysuperiorInfo.mobile||'没有上级'}}</i>
+				</a>
+			</li>
+			<li ui-sref="user.realName">
+				<a href="javascript:;" class="flex">
+					<b class="ion-person assertive"></b>
+					<h3 class="flex_1">个人信息</h3>
+					<i class="ion-ios-arrow-right t_arrow_right"></i>
+				</a>
+			</li>
+			<li ui-sref="user.myaddress">
+				<a href="javascript:;" class="flex">
+					<b class="ion-person assertive"></b>
+					<h3 class="flex_1">收货地址</h3>
+					<i class="ion-ios-arrow-right t_arrow_right"></i>
+				</a>
+			</li>
+			<li ui-sref='cdF.cf-bankList'>
+				<a href="javascript:;" class="flex">
+					<b class="ion-card assertive"></b>
+					<h3 class="flex_1">银行卡</h3>
+					<i class="ion-ios-arrow-right t_arrow_right"></i>
+				</a>
+			</li>
+			<li ui-sref="user.identifyname">
+				<a href="javascript:;" class="flex">
+					<b class="ion-person assertive"></b>
+					<h3 class="flex_1">实名认证</h3>
+					<i class="ion-ios-arrow-right t_arrow_right"></i>
+				</a>
+			</li>
+			<!--<li ui-sref="user.loginPsw({type:1})">
+				<a href="javascript:;" class="flex">
+					<b class="ion-locked assertive"></b>
+					<h3 class="flex_1">修改登录密码</h3>
+					<i class="ion-ios-arrow-right t_arrow_right"></i>
+				</a>
+			</li>
+			<li ui-sref="user.loginPsw({type:2})">
+				<a href="javascript:;" class="flex">
+					<b class="ion-ios-compose assertive"></b>
+					<h3 class="flex_1">修改支付密码</h3>
+					<i class="ion-ios-arrow-right t_arrow_right"></i>
+				</a>
+			</li>-->
+			<!--<li ui-sref="user.resetPayWord">-->
+				<!--<a href="javascript:;" class="flex">-->
+					<!--<b class="ion-ios-compose assertive"></b>-->
+					<!--<h3 class="flex_1">忘记支付密码</h3>-->
+					<!--<i class="ion-ios-arrow-right t_arrow_right"></i>-->
+				<!--</a>-->
+			<!--</li>-->
+		</ul>
+		<!--<ul class="t_mess_list">-->
+			<!--<li ui-sref="user.news">-->
+				<!--<a href="javascript:;" class="flex">-->
+					<!--<b class="ion-chatboxes calm"></b>-->
+					<!--<h3 class="flex_1">消息中心</h3>-->
+					<!--<i class="ion-ios-arrow-right t_arrow_right"></i>-->
+				<!--</a>-->
+			<!--</li>-->
+			<!--<li ui-sref="user.userHelp">
+				<a href="javascript:;" class="flex">
+					<b class="ion-chatbubbles calm"></b>
+					<h3 class="flex_1">用户帮助</h3>
+					<i class="ion-ios-arrow-right t_arrow_right"></i>
+				</a>
+			</li>-->
+			<!--<li ui-sref="version">-->
+				<!--<a href="javascript:;" class="flex">-->
+					<!--<b class="ion-clipboard calm"></b>-->
+					<!--<h3 class="flex_1">版本说明</h3>-->
+					<!--<i class="ion-ios-arrow-right t_arrow_right"></i>-->
+				<!--</a>-->
+			<!--</li>-->
+			<!--<li ui-sref="user.aboutUs">
+				<a href="javascript:;" class="flex">
+					<b class="ion-happy-outline calm"></b>
+					<h3 class="flex_1">关于我们</h3>
+					<i class="ion-ios-arrow-right t_arrow_right"></i>
+				</a>
+			</li>-->
+		<!--</ul>-->
+	</ion-content>
+
+	<ion-footer-bar>
+		<button class="button button-calm"  ng-click="logout()" style="width: 100%;background:#EC0005;">安全退出</button>
+	</ion-footer-bar>
+</ion-view>
+

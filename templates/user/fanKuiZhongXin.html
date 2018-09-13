@@ -1,0 +1,43 @@
+<ion-view title="反馈中心" hide-nav-bar="true" hide-back-button="true">
+        <ion-header-bar class="bar-calm header-back">
+            <div class="buttons">
+                <button class="button iconfont icon-back1 button-clear" ui-sref='tab.my'>返回</button>
+            </div>
+            <h1 class="title">反馈中心</h1>
+        </ion-header-bar>
+    <ion-content class="bodybg-normal">
+        <!--<div class="yd-pay-header">
+			<img ng-src="{{shopsName.logo}}">
+			<h3 class="text-overflow_1">{{shopsName.title}}</h3>
+			<p class="text-overflow_1">{{shopsName.birthInfo}}</p>
+		</div>-->
+        <div class="yd-donate-count real-count">
+            <ul>
+                    <li ng-click="showPlatform = !showPlatform">
+                            <div class="flex beanType">
+                            	<p class="flex_1">反馈类型</p>
+                            	<span>{{fankui.cateName || '请选择'}}<i class="iconfont icon-unfold" ng-if="showPlatform"></i><i class="iconfont icon-right" ng-if="!showPlatform"></i></span>
+                            </div>
+                            <div class="bean" ng-if="showPlatform">
+                            	<p ng-click="platformType(item)" ng-repeat="item in info">{{item}}</p>
+                            </div>
+                        </li>
+                <li class="money">
+                    <label>标题</label>
+                    <input type="text" placeholder="" ng-model="fankui.title">
+                </li>
+
+ 
+            </ul>
+
+
+
+            <div class="pay-bz flex padding">
+                <textarea style="    font-size: 1rem;" rows="5" class="flex_1" placeholder="请输入您的反馈尽量写详细如遇交易问题请备注对方交易ID" ng-model="fankui.content"></textarea>
+            </div>
+        </div>
+        <div class="padding sure-btn">
+            <button class="button button-block button-calm" ng-click="submit()" style="background-color: #42ad2c; ">提交</button>
+        </div>
+    </ion-content>
+</ion-view>

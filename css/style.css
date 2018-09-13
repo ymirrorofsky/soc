@@ -1,0 +1,1078 @@
+.commonend-empty {
+	/*background: url("../img/tcbj_empty.png") no-repeat center;*/
+	width: 100%;
+	clear: both;
+	overflow: hidden;
+	height: 140px;
+	text-align: center;
+	margin: 0 auto;
+	color: #ccc;
+	font-size: 10px;
+}
+
+.commonend-empty:before {
+	content: '';
+	background-image: url("../img/tcbj_empty.png");
+	background-size: 80px 64px;
+	width: 80px;
+	height: 64px;
+	display: block;
+	margin: 20px auto 10px;
+}
+/*背景色*/
+.conbg-vrc{
+	/*background:#042b41*/
+	/*background:rgba(4,43,65,.8);*/
+	/* background: url(../img/bg.jpg);
+	background-size: cover */
+	
+}
+/*首页机市*/
+
+.kuangjiList {
+	/* background: rgba(30, 107, 151, .3); */
+}
+
+.kuangjiList li {
+	position: relative;
+	margin-bottom: 2px;
+	padding: 10px 60px 10px 100px;
+	overflow: hidden;
+	/*background: #011627;*/
+	border-bottom: .02rem solid rgb(148, 209, 136);
+	border-top: .02rem solid rgb(148, 209, 136);
+}
+
+.kuangjiList li .kuangjiList-left {
+	position: absolute;
+	left: 15px;
+	top: 30px;
+	width: 80px;
+	height: 80px;
+}
+
+.kuangjiList li .kuangjiList-left img {
+    width: 80%;
+    max-height: 100px;
+}
+
+.kuangjiList li .kuangjiList-middle {
+	width: 100%;
+	padding: 0 10px;
+}
+
+.kuangjiList li .kuangjiList-middle h2 {
+	font-size: 15px;
+	    color: #42ad2c;
+}
+
+.kuangjiList li .kuangjiList-middle p {
+	font-size: 12px;
+	color: #000;
+}
+
+.kuangjiList li .kuangjiList-right {
+	position: absolute;
+	right: 10px;
+	bottom: 50px;
+}
+
+.kuangjiList li .kuangjiList-right span {
+	background: #42ad2c;
+	border-radius: 10px;
+	color: white;
+	padding: 5px 8px;
+	font-size: 12px;
+}
+
+
+/*矿机*/
+
+.kuangjinum,
+.tapbox {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox
+}
+
+.kuangjinum li,
+.ms table tr td,
+.showbox li th,
+.shuaxin,
+.shuaxin span {
+	text-align: center
+}
+
+.own-main-background-color {
+	background: rgba(30, 107, 151, .3);
+	position: fixed;
+	top: 0;
+	z-index: 999
+}
+
+.showbox li th,
+.tapbox .tapactive {
+	background: rgb(148, 209, 136)
+}
+
+.own-main-background-color #nav-title {
+	color: #00CFE7
+}
+
+.kuangjinum {
+	display: flex;
+	padding: .59rem .3rem
+}
+
+.kuangjinum li {
+	flex: 1;
+	margin-top: 20px;
+}
+
+.kuangjinum li p {
+	font-size: 1rem;
+	color: #000
+}
+
+.kuangjinum li div {
+	color: #42ad2c;
+	font-size: 1.6rem;
+	margin-top: 1rem
+}
+
+.tapbox {
+	width: 12rem;
+	height: 30px;
+	display: flex;
+	border: .04rem solid rgb(148, 209, 136);
+	-moz-border-radius: .15rem;
+	-webkit-border-radius: .15rem;
+	border-radius: 0.8rem;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 20px auto 25px;
+	overflow: hidden
+}
+
+.tapbox li {
+	width: 50%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center
+}
+
+.tapbox li span {
+	color: #42ad2c;
+	font-size: 1rem
+}
+
+.tapbox .tapactive span {
+	font-size: 1rem;
+	color: white
+}
+
+.tapbox i {
+	font-style: normal;
+	font-size: 1rem
+}
+
+.tapbox .tapactive i {
+	font-size: 1rem;
+	font-style: normal
+}
+
+.showbox li {
+	position: relative;
+	top: 1.8rem;
+	height: 6.8rem;
+	display: none
+}
+
+.showbox .showactive {
+	display: block
+}
+
+.showbox li th {
+	height: .7rem;
+	border: none;
+	font-size: 1rem;
+	color: #000;
+	font-weight: 400
+}
+
+.scw {
+	top: .4rem;
+	flex: 1
+}
+
+.ms {
+	padding: 0 .3rem
+}
+
+.ms table {
+	width: 100%
+}
+
+.ms table tr {
+	height: .7rem;
+	border: .02rem solid rgb(148, 209, 136)
+}
+
+.finish div,
+.ing div {
+	display: inline-block;
+	width: .18rem;
+	height: .18rem
+}
+
+.ms table tr td {
+	border: none;
+	font-size: 13px;
+}
+
+.finish div {
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	background: #666
+}
+
+.ing div {
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	background: #01b736
+}
+
+.finish {
+	color: #666
+}
+
+.ing {
+	color: #01b736
+}
+
+.shuaxin {
+	/*background: rgba(30, 107, 151, .3);*/
+	width: .5rem;
+	height: .5rem;
+	color: #42ad2c;
+	position: fixed;
+	z-index: 999;
+	bottom: .2rem;
+	right: .3rem
+}
+.shuaxin span {
+	display: block;
+	width: 100%;
+	height: 100%;
+	line-height: .5rem;
+	transition: all 1s linear;
+	-webkit-transition: all 1s linear;
+	-moz-transition: all 1s linear;
+	-o-transition: all 1s linear
+}
+
+/*矿池*/
+.kuangchi{
+	
+}
+.kuangchi-top{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox
+}
+.kuangchi-top li
+ {
+	text-align: center
+}
+
+.kuangchi-top {
+	display: flex;
+	padding: .59rem .3rem
+}
+
+.kuangchi-top li {
+	flex: 1;
+	margin-top: 20px;
+}
+
+.kuangchi-top li p {
+	font-size: 14px;
+	color: #000;
+	line-height: 2;
+}
+.kuangchi-top li h2{
+	font-size:10px;
+	color: #000;margin: 0;line-height: 0;
+	line-height: 1.5;
+}
+.kuangchi-top li div {
+	color: #42ad2c;
+	font-size: 1.6rem;
+	margin-top: 1rem
+}
+.kuangchi-tap{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox
+}
+
+.kuangchi-tap {
+	width: 220px;
+	height:30px;
+	display: flex;
+	border: .04rem solid rgb(148, 209, 136);
+	border-radius: 10px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	margin:15px auto;
+	overflow: hidden;
+}
+
+.kuangchi-tap li {
+	width: 50%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center
+}
+.kuangchi-tap .tapactive {
+	background: rgb(148, 209, 136);
+}
+.kuangchi-tap li span {
+	color: #42ad2c;
+	font-size: 1rem;
+}
+
+.kuangchi-tap .tapactive span {
+	font-size: 1rem;
+	color:white;
+}
+
+.kuangchi-peopple{
+	margin-top: 30px;
+}
+.kuangchi-peopple li th {
+	background: rgb(148, 209, 136)
+	text-align: center;font-size: 1rem
+}
+.kuangchi-peopple>li {
+	position: relative;
+	height: 7rem;
+	display: none
+}
+.kuangchi-peopple .showactive {
+	display: block
+}
+.kuangchi-peopple>li div li{
+	padding: 10px 15px;
+	background: rgba(2, 210, 245, .1);
+	display: flex;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	color: #42ad2c;
+}
+.kuangchi-peopple>li div li .head {
+	width: 40px;
+	height:40px;
+	border-radius: 50%;
+	margin-right: 10px;flex-grow: 0
+}
+
+.kuangchi-peopple>li div li .head img {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	display: block
+}
+.kuangchi-peopple>li div li .leftbox {
+	flex-grow: 1
+}
+
+.kuangchi-peopple>li div li .middlebox {
+	margin-right:10px;
+}
+/*个人中心*/
+.mynumberbox ul,
+.mytopbox {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox
+}
+.mytopbox .headimg,
+.mytopbox .toptext {
+	float: left;
+}
+
+.mytopbox {
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	padding: 0 10px;
+}
+
+.mytopbox .headimg #person,
+.mytopbox .headimg #person img {
+	width: 40px;
+	height: 40px;
+	display: block
+}
+
+.mytopbox .headimg #person {
+	/* border: .04rem solid #00CFE7; */
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	overflow: hidden;
+	/* box-shadow: 0 0 13px #42ad2c; */
+	margin-right: 10px;
+}
+
+.mytopbox .headimg #person img {
+	padding: 0;
+	margin: 0
+}
+
+.mui-content {
+	padding: .3rem .3rem 0
+}
+
+.toptext {
+	margin-left: .15rem
+}
+
+.toptext p {
+	font-size: 1rem;
+	color: #000;margin: 0;
+}
+
+.mytopbox .norenzheng,
+.mytopbox .renzheng {
+	padding: 0.5px 5px;
+	margin-left: 10px;
+	font-size: 1rem
+}
+
+.mytopbox .renzheng {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	border: .04rem solid #00b738;
+	-moz-border-radius: .3rem;
+	-webkit-border-radius: .3rem;
+	border-radius: .3rem;
+	color: #00B738
+}
+
+.mytopbox .norenzheng {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	border: .02rem solid #666;
+	-moz-border-radius: .3rem;
+	-webkit-border-radius: .3rem;
+	border-radius: .3rem;
+	color: #666
+}
+
+.topbtnbox {
+	display: -webkit-inline-box;
+	display: -webkit-inline-flex;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	-webkit-box-pack: flex-end;
+	-webkit-justify-content: flex-end;
+	-ms-flex-pack: flex-end;
+	justify-content: flex-end
+}
+
+.topbtnbox li {
+	float: left;
+	position: relative
+}
+ .topbtnbox li a{
+	   color: rgb(148, 209, 136);
+	  
+ }    
+ .my .topbtnbox li a {
+    font-size: 22px;
+    padding: 10px 5px;
+ }
+.topbtnbox li:first-child {
+	margin-right: .48rem
+}
+
+.redcircle {
+	width: .12rem;
+	height: .12rem;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	background: red;
+	position: absolute;
+	top: -.02rem;
+	right: -.02rem
+}
+
+.mynumberbox {
+	width: 90vw;
+	height:140px;
+	margin: 20px auto auto;
+	background: url(../img/zichanbg.png) no-repeat center;
+	background-size: 90vw 140px;
+	padding-top: 20px;
+}
+
+.mynumberbox p {
+	font-size: 1rem;
+	color: #000;
+	text-align: center
+}
+
+.mynumberbox div {
+	font-size: 1rem;
+	color: #00CFE7;
+	text-align: center;
+	text-shadow: .05rem .05rem .05rem #000;
+	margin-bottom: .3rem
+}
+
+#dongjie,
+#keyong {
+    color: #000 !important;
+	font-size: 1rem;
+	margin-right: 3px;
+}
+
+.mygongnengbox li a span,
+.mynumberbox ul li span {
+	font-size: 1rem;
+	color: #000;
+}
+
+.mynumberbox ul {
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	padding: 0 .4rem
+}
+
+.mynumberbox ul li {
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	text-align: center;
+}
+
+.mygongnengbox {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	flex-wrap: wrap;
+	-webkit-box-flex: 3;
+	-webkit-flex: 3;
+	-ms-flex: 3;
+	flex: 3;
+	margin-top: 40px;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	    margin-bottom: 20px;
+}
+
+.mygongnengbox li {
+	width: 33vw;
+	
+}
+
+.mygongnengbox li a {
+	width: 100%;
+	display: block;
+	overflow: hidden
+}
+
+.mygongnengbox li:nth-child(3) {
+	margin-right: 0
+}
+
+.mygongnengbox li:nth-child(4),
+.mygongnengbox li:nth-child(5),
+.mygongnengbox li:nth-child(6) {
+	margin-top:30px;
+}
+
+.mygongnengbox li a .icon {
+	background: url(../img/iconbg.png);
+	background-size:60px 60px;
+	width: 60px;
+	height: 60px;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	margin: 0 auto;
+}
+
+.mygongnengbox li a .icon .smallicon1 {
+	display: block;
+	width: 23px;
+	height: 26px;
+	overflow: hidden;
+	background: url(../img/icon.png) -25px -35px;
+	background-size: 375px 666.667px;
+}
+
+.mygongnengbox li a .icon .smallicon2 {
+	display: block;
+	width: 23px;
+	height: 26px;
+	overflow: hidden;
+	background: url(../img/icon.png) -157px -35px;
+	background-size: 375px 666.667px
+}
+
+.mygongnengbox li a .icon .smallicon3 {
+	display: block;
+	width: 28px;
+	height: 26px;
+	overflow: hidden;
+	background: url(../img/icon.png) -155px -117px;
+	background-size: 375px 666.667px
+}
+
+.mygongnengbox li a .icon .smallicon4 {
+	display: block;
+	width: 23px;
+	height: 26px;
+	overflow: hidden;
+	background: url(../img/icon.png) -26px -120px;
+	background-size: 375px 666.667px
+}
+
+.mygongnengbox li a .icon .smallicon5 {
+	display: block;
+	width: 23px;
+	height: 26px;
+	overflow: hidden;
+	background: url(../img/icon.png) -290px -118px;
+	background-size: 375px 666.667px
+}
+
+.mygongnengbox li a span {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	margin-top: .2rem
+}
+/*矿市*/
+.kuangshinum,
+.tapbox li {
+	display: flex;
+	align-items: center
+}
+
+.showbox li th,
+.showbox2 li th {
+	font-weight: 400;
+	text-align: center
+}
+
+#popover,
+.conlist,
+.ms>li .head {
+	overflow: hidden
+}
+
+.btnbox,
+.ms table tr td,
+.selbtn,
+.showbox li th,
+.showbox2 li th,
+.shuaxin,
+.shuaxin span {
+	text-align: center
+}
+
+.own-main-background-color {
+	background: rgba(30, 107, 151, .3);
+	position: fixed;
+	top: 0;
+	z-index: 999
+}
+
+.showbox li th,
+.showbox2 li th {
+	background: rgb(148, 209, 136)
+}
+
+.showbox2>li,
+.showbox>li,
+.toptitle {
+	position: relative
+}
+
+.own-main-background-color #nav-title {
+	color: #00CFE7
+}
+
+.kuangshinum {
+	padding: 10px 10%
+}
+
+.kuangshinum li {
+	width: 33.3%;
+	flex: 1;
+	font-size: .6rem;
+	color: #42ad2c
+}
+
+.kuangshinum li p {
+	font-size: 1rem;
+	color: #42ad2c;margin: 0;
+}
+
+
+.kuangjibox .showbox>li {
+	min-height: 6.8rem;
+	
+	top: 0;
+}
+
+.showbox .showactive {
+	display: block
+}
+
+.showbox li th {
+	height: .7rem;
+	border: none;
+	font-size: 12px;
+	color: #000
+}
+
+.showbox2>li {
+	height: 4rem;
+	display: none
+}
+
+.ms>li,
+.ms>li p:first-child {
+	margin-bottom: .1rem
+}
+
+.showbox2 .showactive {
+	display: block
+}
+
+.showbox2 li th {
+	height: .7rem;
+	border: none;
+	font-size: 1rem;
+	color: #000
+}
+.showbox2>li div li.input{
+	border-bottom: .02rem solid rgb(148, 209, 136);
+	line-height: .8rem;
+	height: 40px;font-size: 14px;
+}
+.showbox2>li div li label{
+	color: #42ad2c;
+    display: inline-block;    font-size: 14px;
+    width: 30px;
+}
+    
+.showbox2>li div li:first-child{
+	margin-top: 20px;
+}
+.showbox2>li div  li:last-child {
+    /* text-align: center; */
+    margin-top: .2rem;
+}
+.showbox2>li div  li:last-child a,
+.showbox2>li div  li:last-child a:link,
+.showbox2>li div  li:last-child a:visited {
+	color: white
+}
+.showbox2>li div  li:last-child a{
+	padding: 5px 0;
+	width: 80px;
+	background: #42ad2c;
+	border-radius: 15px;
+	display: inline-block;
+	font-size: 1rem
+}
+.showbox2>li div li input[type=text]{
+	 color: #42ad2c;
+	display: inline-block;
+	border-radius: 0;
+    border: none;
+    background: 0 0;
+    margin: 0;
+    width: auto;
+    padding: .2rem .69rem;
+    font-size: 12px;    line-height: 1;
+    outline: 0;
+}
+ 
+.code {
+	display: flex;
+	align-items: center
+}
+
+
+.finish div,
+.ing div {
+	display: inline-block;
+    width: 0.69rem;
+    height: 0.69rem;
+	border-radius: 50%
+}
+
+.finish div {
+	background: #666
+}
+
+.ing div {
+	background: #01b736
+}
+
+.finish {
+	color: #666
+}
+
+.ing {
+	color: #01b736
+}
+
+
+.messagebox li {
+	padding: .3rem .1rem;
+	background: rgba(2, 210, 245, .05);
+	margin-bottom: .1rem
+}
+
+.messagebox li:first-child {
+	margin-top: .3rem
+}
+
+.code {
+	justify-content: space-between
+}
+
+.codeleft,
+.toptitle {
+	align-items: center;
+	display: flex
+}
+
+.circle {
+	width: .1rem;
+	height: .1rem;
+	border-radius: 50%;
+	background: #42ad2c;
+	margin-right: .1rem
+}
+
+.code p {
+	font-size: 1rem;
+	color: #42ad2c
+}
+
+.code .time,
+.info {
+	color: #000;
+	font-size: 1rem
+}
+
+.info {
+	margin-top: .25rem
+}
+
+.btnbox {
+	margin-top: .35rem
+}
+
+button {
+	width: 1.4rem;
+	height: .6rem;
+	border: none;
+	border-radius: .4rem;
+	padding: 0;
+	margin: 0;
+	font-size: 1rem;
+	background: 0 0
+}
+
+.look {
+	border: .02rem solid #42ad2c;
+	color: #42ad2c
+}
+
+.succ {
+	border: .02rem solid #01B736;
+	color: #01b736;
+	margin: 0 .5rem
+}
+
+.esc {
+	border: .02rem solid red;
+	color: red
+}
+
+.toptitle,
+.toptitle p {
+	color: #000;
+	font-size: .3rem
+}
+
+.mui-backdrop {
+	background-color: rgba(0, 0, 0, .8)
+}
+
+#popover {
+	width: 6rem;
+	height: 6rem;
+	border: .03rem solid #42ad2c;
+	background: rgba(2, 210, 245, .75)
+}
+
+.toptitle {
+	height: .74rem;
+	border-bottom: .02rem solid #000;
+	justify-content: center
+}
+
+.closebtn {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: .28rem;
+	line-height: .7rem
+}
+
+.conlist li {
+	display: flex;
+	align-items: center;
+	margin-top: .15rem;
+	padding: 0 .18rem
+}
+
+.conlist li>p {
+	font-size: 1rem;
+	color: #ff0;
+	font-weight: 700
+}
+
+.conlist li span {
+	font-size: 1rem;
+	color: #000;
+	width: 1rem
+}
+
+.conlist li .accountinput {
+	line-height: 1;
+	border-radius: .04rem;
+	border: .02rem solid #000;
+	outline: 0;
+	height: .45rem;
+	background: 0 0;
+	margin: 0;
+	display: inline-block;
+	width: auto;
+	padding: 0 1rem;
+	font-size: 1rem;
+	color: #000
+}
+
+.conlist li .copy {
+	border-radius: .04rem;
+	border: .02rem solid #000;
+	color: #000;
+	width: .8rem;
+	height: .5rem;
+	font-size: 1rem;
+	margin-left: .2rem
+}
+
+.mui-popover {
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto
+}
+
+.shuaxin {
+    /*background: rgba(30, 107, 151, .3);*/
+    width: 2.5rem;
+    height: 2.5rem;
+    color: #42ad2c;
+    position: fixed;
+    z-index: 999;
+    bottom: 4rem;
+    right: 0.65rem;
+}
+
+.shuaxin span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 2.5rem;
+    transition: all .4s linear;
+    -webkit-transition: all .4s linear;
+    -moz-transition: all .4s linear;
+    -o-transition: all .4s linear;
+}
+
+

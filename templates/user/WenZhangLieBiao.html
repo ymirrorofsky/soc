@@ -1,0 +1,72 @@
+<ion-view view-title="文章列表" hide-nav-bar="true">
+    <ion-header-bar class="bar-calm header-back">
+        <div class="buttons">
+            <button class="button iconfont icon-back1 button-clear" ui-sref='tab.my'>返回</button>
+        </div>
+        <h1 class="title">
+            <span>文章列表</span>
+        </h1>
+
+        <div class="buttons">
+            <button class="button button-clear button-right" ui-sref='user.faBuWenZhang'>发布文章</button>
+        </div>
+    </ion-header-bar>
+    <ion-content class="wenzhangliebiao jiaoyidating bodybg-normal">
+        <ion-refresher pulling-text="下拉刷新.." on-refresh="doRefresh()"></ion-refresher>
+        <div class="kuangshi">
+            <ul class="tapbox ks_option2">
+                <li ng-click="optionS('1')" ng-class="{'tapactive':option == '1'}">
+                    <span>文章列表
+                        <i></i>
+                    </span>
+                </li>
+                <li ng-click="optionS('2')" ng-class="{'tapactive':option == '2'}" class="ks_maichu">
+                    <span>我的发布
+                        <i></i>
+                    </span>
+                </li>
+
+
+            </ul>
+        </div>
+
+        <div class="geRenZiLiao">
+            <div class="mui-content" id="person" style="padding-top:.2rem">
+                <ul class="two">
+                    <li ng-repeat="item in list" ng-if="option == '1'">
+                        <!-- user.wenZhangXiangQing({id:item.id}) -->
+                        <a   ui-sref='user.artDetail({id:item.id})'>
+                            <b>{{item.title}}</b>
+                            <div style="margin-right:.1rem">
+                                <span v-text="weixin">{{item.create_time}}</span>
+                                <i class="iconfont">&#xe603;</i>
+                            </div>
+                        </a>
+                    </li>
+                    <li ng-repeat="item in list" ng-if="option == '2'">
+                        <a  ui-sref='user.artDetail({id:item.id})'>
+                            <b>{{item.title}}</b> 
+                            <div style="margin-right:.1rem">
+                                <span v-text="weixin" ng-if="item.status == 1">{{item.create_time}}</span>
+                                <span v-text="weixin" ng-if="item.status == 0" style="color:green">待审核</span>
+                                <span v-text="weixin" ng-if="item.status == -1" style="color:red">已驳回</span>
+                                <i class="iconfont">&#xe603;</i>
+                            </div>
+                        </a>
+                    </li>
+    
+                </ul>
+            </div>
+
+
+        </div>
+
+
+
+
+        <ion-infinite-scroll ng-if="!noMore" on-infinite="loadMore()" distance="1%" icon="" immediate-check="false"></ion-infinite-scroll>
+
+    </ion-content>
+
+
+</ion-view>
